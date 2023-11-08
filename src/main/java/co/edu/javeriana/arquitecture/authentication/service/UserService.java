@@ -1,7 +1,6 @@
 package co.edu.javeriana.arquitecture.authentication.service;
 
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.representations.idm.CredentialRepresentation;
@@ -17,9 +16,7 @@ import co.edu.javeriana.arquitecture.authentication.entity.User;
 import java.util.List;
 
 @Service
-@Slf4j
 public class UserService {
-    //REF: https://gist.github.com/thomasdarimont/c4e739c5a319cf78a4cff3b87173a84b
     @Autowired
     private Keycloak keycloak;
 

@@ -2,7 +2,6 @@ package co.edu.javeriana.arquitecture.authentication.service;
 
 import lombok.NonNull;
 import lombok.val;
-import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -21,7 +20,6 @@ import co.edu.javeriana.arquitecture.authentication.entity.RefreshTokenRequest;
 import java.util.Map;
 
 @Service
-@Slf4j
 public class OIDCService {
     @Autowired
     private RestTemplate restTemplate;

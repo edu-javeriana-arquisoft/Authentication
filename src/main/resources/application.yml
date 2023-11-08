@@ -1,13 +1,13 @@
 keycloak-config:
-  clientId: e-commerce-client
-  clientSecret: n4uIvFd7bHUZSOAB3pwc5ForPCLQ08OW
-  url: http://localhost:8181/
-  realm: arquitectura
+  clientId: ${CLIENT_ID}
+  clientSecret: ${CLIENT_SECRET}
+  url: ${KEYCLOAK_URL}
+  realm: ${KEYCLOAK_REALM}
 
 oidc:
-  client_id: e-commerce-client
-  client_secret: n4uIvFd7bHUZSOAB3pwc5ForPCLQ08OW
-  token_url: http://localhost:8181/realms/arquitectura/protocol/openid-connect/token
-  logout_url: http://localhost:8181/realms/arquitectura/protocol/openid-connect/logout
-  issuer_url: http://localhost:8181/realms/arquitectura
-  jwks_url: http://localhost:8181/realms/arquitectura/protocol/openid-connect/certs
+  client_id: ${CLIENT_ID}
+  client_secret: ${CLIENT_SECRET}
+  token_url: ${TOKEN_URL}
+  logout_url: ${LOGOUT_URL}
+  issuer_url: ${ISSUER_URL}
+  jwks_url: ${JWKS_URL}
