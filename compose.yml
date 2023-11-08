@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  authentication:
+    build: .
+    hostname: authentication
+    networks:
+      - arqui
+    environment:
+      KEYCLOAK_URL: http://localhost:8181
+      KEYCLOAK_REALM: arquitectura
+      CLIENT_ID: e-commerce-client
+      CLIENT_SECRET: n4uIvFd7bHUZSOAB3pwc5ForPCLQ08OW
+      TOKEN_URL: http://localhost:8181/realms/arquitectura/protocol/openid-connect/token
+      LOGOUT_URL: http://localhost:8181/realms/arquitectura/protocol/openid-connect/logout
+      ISSUER_URL: http://localhost:8181/realms/arquitectura
+    ports:
+      - "8081:8080"
+
+  db:
+    image: postgres:latest
+    restart: always
+    hostname: postgres
+    environment:
+      POSTGRES_AUTH_METHOD: trust
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: keycloak_db
+    networks:
+      - arqui
+
+  keycloak:
+    image: keycloak/keycloak:20.0.5
+    restart: always
+    hostname: keycloak
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: db
+      DB_SCHEMA: public
+      DB_DATABASE: keycloak_db
+      DB_USER: admin
+      DB_PASSWORD: admin
+      KEYCLOAK_HOSTNAME: keycloak
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    networks:
+      - arqui
+    ports:
+      - "8181:8080"
+    command:
+      - start-dev
+networks:
+  arqui:
+    driver: bridge
+    external: true
